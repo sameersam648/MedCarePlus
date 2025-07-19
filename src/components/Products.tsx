@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiSearch, FiFilter, FiShoppingCart, FiHeart, FiStar } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const ref = useRef(null);
@@ -20,7 +21,7 @@ const Products = () => {
       rating: 4.8,
       reviews: 128,
       inStock: true,
-      image: 'https://images.pexels.com/photos/3786157/pexels-photo-3786157.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://in.pinterest.com/pin/401101910580333552/', // Paracetamol
       prescription: true
     },
     {
@@ -32,7 +33,7 @@ const Products = () => {
       rating: 4.6,
       reviews: 89,
       inStock: true,
-      image: 'https://images.pexels.com/photos/3683107/pexels-photo-3683107.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://in.pinterest.com/pin/948992952733359531/', // Vitamin D3
       prescription: false
     },
     {
@@ -44,7 +45,7 @@ const Products = () => {
       rating: 4.9,
       reviews: 156,
       inStock: true,
-      image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://in.pinterest.com/pin/346073552629215264/', // Thermometer
       prescription: false
     },
     {
@@ -56,7 +57,7 @@ const Products = () => {
       rating: 4.5,
       reviews: 234,
       inStock: true,
-      image: 'https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://in.pinterest.com/pin/47287864827467884/', // Sanitizer
       prescription: false
     },
     {
@@ -68,7 +69,7 @@ const Products = () => {
       rating: 4.7,
       reviews: 67,
       inStock: true,
-      image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://in.pinterest.com/pin/637400153550481710/', // BP Monitor
       prescription: false
     },
     {
@@ -80,7 +81,7 @@ const Products = () => {
       rating: 4.8,
       reviews: 112,
       inStock: false,
-      image: 'https://images.pexels.com/photos/3683107/pexels-photo-3683107.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://in.pinterest.com/pin/4591982893500436480/', // Omega 3
       prescription: false
     }
   ];
@@ -179,13 +180,15 @@ const Products = () => {
                     Prescription Required
                   </div>
                 )}
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  <FiHeart className="text-gray-600" />
-                </motion.button>
+                <Link to="/profile">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <FiHeart className="text-gray-600" />
+                  </motion.button>
+                </Link>
               </div>
 
               {/* Product Info */}
@@ -209,19 +212,21 @@ const Products = () => {
                   </span>
                 </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  disabled={!product.inStock}
-                  className={`w-full py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2 ${
-                    product.inStock
-                      ? 'bg-emerald-500 text-white hover:bg-emerald-600'
-                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  }`}
-                >
-                  <FiShoppingCart />
-                  <span>{product.inStock ? 'Add to Cart' : 'Out of Stock'}</span>
-                </motion.button>
+                <Link to="/cart">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    disabled={!product.inStock}
+                    className={`w-full py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2 ${
+                      product.inStock
+                        ? 'bg-emerald-500 text-white hover:bg-emerald-600'
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                  >
+                    <FiShoppingCart />
+                    <span>{product.inStock ? 'Add to Cart' : 'Out of Stock'}</span>
+                  </motion.button>
+                </Link>
               </div>
             </motion.div>
           ))}

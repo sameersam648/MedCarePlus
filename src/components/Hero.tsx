@@ -1,13 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiPlay, FiShield, FiClock, FiTruck } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen bg-gradient-to-br from-emerald-600 via-blue-600 to-blue-700 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-black/20"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%224%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+      {/* Medical-themed SVG pattern background */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'25\' y=\'10\' width=\'10\' height=\'40\' rx=\'3\' fill=\'%23ffffff\' fill-opacity=\'0.07\'/%3E%3Crect x=\'10\' y=\'25\' width=\'40\' height=\'10\' rx=\'3\' fill=\'%23ffffff\' fill-opacity=\'0.07\'/%3E%3C/svg%3E')]"></div>
+      {/* Subtle medical cross watermark */}
+      <div className="absolute right-10 bottom-10 opacity-10 pointer-events-none select-none">
+        <svg width="180" height="180" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="10" width="10" height="40" rx="3" fill="#fff" />
+          <rect x="10" y="25" width="40" height="10" rx="3" fill="#fff" />
+        </svg>
+      </div>
 
       {/* Floating Elements */}
       {[...Array(6)].map((_, i) => (
@@ -79,23 +88,16 @@ const Hero = () => {
                 transition={{ delay: 0.8 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2"
-                >
-                  <span>Order Now</span>
-                  <FiArrowRight />
-                </motion.button>
-                
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-700 transition-colors flex items-center justify-center space-x-2"
-                >
-                  <FiPlay />
-                  <span>Watch Demo</span>
-                </motion.button>
+                <Link to="/order-now">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <span>Order Now</span>
+                    <FiArrowRight />
+                  </motion.button>
+                </Link>
               </motion.div>
 
               {/* Stats */}

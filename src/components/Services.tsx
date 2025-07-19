@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiShoppingBag, FiTruck, FiClock, FiShield, FiUsers, FiSmartphone } from 'react-icons/fi';
 import { FaRobot, FaHospital, FaPills } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const ref = useRef(null);
@@ -123,13 +124,15 @@ const Services = () => {
               </ul>
 
               {/* CTA */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`mt-6 w-full py-3 px-4 rounded-lg bg-gradient-to-r ${service.color} text-white font-medium hover:shadow-lg transition-shadow duration-300`}
-              >
-                Learn More
-              </motion.button>
+              <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="block w-full h-full">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`mt-6 w-full py-3 px-4 rounded-lg bg-gradient-to-r ${service.color} text-white font-medium hover:shadow-lg transition-shadow duration-300`}
+                >
+                  Learn More
+                </motion.button>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -148,20 +151,24 @@ const Services = () => {
               Start your journey with our comprehensive healthcare platform today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors"
-              >
-                Get Started Now
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-700 transition-colors"
-              >
-                Schedule Demo
-              </motion.button>
+              <Link to="/get-started">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors"
+                >
+                  Get Started Now
+                </motion.button>
+              </Link>
+              <Link to="/schedule-demo">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-700 transition-colors"
+                >
+                  Schedule Demo
+                </motion.button>
+              </Link>
             </div>
           </div>
         </motion.div>

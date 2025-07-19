@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiClock, FiSend, FiMessageCircle } from 'react-icons/fi';
 import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -13,6 +14,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -24,7 +26,7 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log('Form submitted:', formData);
+    navigate('/contact-success');
   };
 
   const contactInfo = [
